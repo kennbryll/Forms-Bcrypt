@@ -1,0 +1,140 @@
+<div class="row">
+    <div class="col">
+      <div class="leftside">
+        <mat-card class="job-profile">
+          <mat-card-title>Job Profile</mat-card-title>
+          <mat-card-content>
+            <form class="job-form data-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+              
+              <mat-form-field>
+                <input matInput 
+                type="text" 
+                formControlName="companyName"
+                name="companyName" 
+                placeholder="Company Name" />
+              </mat-form-field>
+      
+              <mat-error *ngIf="companyName.errors?.required">
+                Company name is required
+              </mat-error>
+  
+              <mat-error *ngIf="companyName.errors?.minlength">
+                Company name should be at least 3 characters
+              </mat-error>
+      
+              <mat-form-field>
+                  <input matInput 
+                  type="text" 
+                  formControlName="companyAddress"
+                  name="companyAddress" 
+                  placeholder="Company Address" />
+                </mat-form-field>
+      
+                <mat-error *ngIf="companyAddress.errors?.required">
+                  Company address is required
+                </mat-error>
+  
+                <mat-error *ngIf="companyAddress.errors?.minlength">
+                  Company address should be at least 3 characters
+                </mat-error>
+
+                <mat-form-field>
+                  <input matInput 
+                  type="text"
+                  formControlName="position"
+                  name="position" 
+                  placeholder="Position" />
+                </mat-form-field>
+        
+                <mat-error *ngIf="position.errors?.required">
+                  Position is required
+                </mat-error>
+    
+                <mat-error *ngIf="position.errors?.minlength">
+                  Position should be at least 3 characters
+                </mat-error>
+      
+                <mat-form-field>
+                  <input matInput 
+                  type="text" 
+                  formControlName="jobTitle"
+                  name="jobTitle" 
+                  placeholder="Job Title" />
+                </mat-form-field>
+      
+                <mat-error *ngIf="jobTitle.errors?.required">
+                  Job title is required
+                </mat-error>
+  
+                <mat-error *ngIf="jobTitle.errors?.minlength">
+                  Job title should be at least 3 characters
+                </mat-error>
+      
+                <mat-form-field>
+                  <input matInput 
+                  type="text" 
+                  formControlName="salary"
+                  name="salary" 
+                  placeholder="Minimum Salary" />
+                </mat-form-field>
+      
+                <mat-error *ngIf="salary.errors?.required">
+                  Salary is required
+                </mat-error>
+  
+                <mat-error *ngIf="salary.errors?.minlength">
+                  Salary should be at least 3 characters
+                </mat-error>
+        
+
+        
+              <button mat-raised-button color="primary" [disabled]="!form.valid" (click)="toggleDisplay2()">Submit</button>
+            </form>
+          </mat-card-content>
+        </mat-card>
+      </div>    
+    </div>
+    <div class="col">
+      <div class="rightside">
+        <div *ngIf="isDisplay2" class="display2">
+          <mat-card class="display">
+            <mat-card-title>
+              Job Profile (Result)
+              <div class="values">
+                <mat-card-content>
+                  <br>
+                  <mat-card-subtitle>
+                    Company Name
+                  </mat-card-subtitle>
+                  {{ companyName.value }}
+                  <br><br>
+                  <mat-card-subtitle>
+                    Company Address
+                  </mat-card-subtitle>
+                  {{ companyAddress.value }}
+                  <br><br>
+                  <mat-card-subtitle>
+                    Position
+                  </mat-card-subtitle>
+                  {{ position.value }}
+                  <br><br>
+                  <mat-card-subtitle>
+                    Job Title
+                  </mat-card-subtitle>
+                  {{ jobTitle.value }}
+                  <br><br>
+                  <mat-card-subtitle>
+                    Salary
+                  </mat-card-subtitle>
+                  {{ salary.value }}
+                  <span matSuffix>.00</span>
+                  <br><br>
+                  
+                </mat-card-content>
+              </div>
+            </mat-card-title>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
